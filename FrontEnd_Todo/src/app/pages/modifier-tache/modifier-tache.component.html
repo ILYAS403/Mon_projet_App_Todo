@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Modifier la tâche</h2>
+
+  <form [formGroup]="tacheForm" (ngSubmit)="onSubmit()">
+    <label>Titre *</label>
+    <input type="text" formControlName="titre">
+
+    <label>Description</label>
+    <textarea formControlName="description"></textarea>
+
+    <label>Date *</label>
+    <input type="date" formControlName="date">
+
+    <label>Statut</label>
+    <select formControlName="statut">
+      <option value="En attente">En attente</option>
+      <option value="En cours">En cours</option>
+      <option value="Terminée">Terminée</option>
+    </select>
+
+    <button type="submit" [disabled]="isLoading">
+      {{ isLoading ? 'Mise à jour...' : 'Modifier la tâche' }}
+    </button>
+  </form>
+</div>

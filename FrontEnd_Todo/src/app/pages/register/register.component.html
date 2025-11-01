@@ -1,0 +1,51 @@
+<div class="register-container">
+  <div class="register-left">
+    <img src="assets/images/IMG_5765.jpg" alt="Avatar" class="avatar">
+    <button>Editer un profile</button>
+    <p>Vous pouvez changer votre profile ou mettre une autre</p>
+  </div>
+
+  <div class="register-right">
+    <h2>S’INSCRIRE</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <i class="fa fa-user"></i>
+        <input type="text" formControlName="prenom" placeholder="Entrez votre prénom">
+      </div>
+      <div class="input-group">
+        <i class="fa fa-user"></i>
+        <input type="text" formControlName="nom" placeholder="Entrez votre nom de famille">
+      </div>
+      <div class="input-group">
+        <i class="fa fa-user-circle"></i>
+        <input type="text" formControlName="profil" placeholder="Entrez votre profile">
+      </div>
+      <div class="input-group">
+        <i class="fa fa-envelope"></i>
+        <input type="email" formControlName="email" placeholder="Entrez votre adresse mail">
+      </div>
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="password" formControlName="mot_de_passe" placeholder="Entrez votre mot de passe">
+      </div>
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="password" formControlName="confirmation_mot_de_passe" placeholder="Confirmer votre mot de passe">
+      </div>
+
+      <div class="sexe">
+        <label>M <input type="radio" formControlName="sexe" value="M"></label>
+        <label>F <input type="radio" formControlName="sexe" value="F"></label>
+        <label>Je ne veux pas dire <input type="radio" formControlName="sexe" value="N"></label>
+      </div>
+
+      <label class="terms">
+        <input type="checkbox" formControlName="confirmation_infos"> I agree to all terms
+      </label>
+
+      <button type="submit">Register</button>
+    </form>
+    <p>J’ai déjà un compte? <a routerLink="/login">Se Connecter</a></p>
+  </div>
+</div>
+

@@ -1,0 +1,144 @@
+.task-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ----- Barre du haut ----- */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.search-bar {
+  width: 40%;
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.date {
+  font-weight: bold;
+  color: #ff4e4e;
+}
+
+/* ----- Menu latéral ----- */
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  width: 220px;
+  background: #ff6b6b;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.user-profile img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.menu li {
+  padding: 10px 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.menu li.active {
+  background: white;
+  color: #ff6b6b;
+  border-radius: 10px;
+}
+
+.logout-btn {
+  margin-top: auto;
+  background: white;
+  color: #ff6b6b;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ----- Tableau ----- */
+.task-table {
+  flex: 1;
+  padding: 20px;
+  background: #f4f4f9;
+}
+
+.task-table h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.actions i {
+  cursor: pointer;
+  font-size: 20px;
+  margin: 0 8px;
+}
+
+.actions i.fa-edit {
+  color: #4CAF50;
+}
+
+.actions i.fa-trash {
+  color: red;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.pagination button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}

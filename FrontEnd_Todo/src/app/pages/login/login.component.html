@@ -1,0 +1,33 @@
+<div class="login-container">
+  <div class="login-left">
+    <h2>Accédez à votre compte <span>Planify</span></h2>
+    <p>Gérez vos <span>tâches</span>, vos <span>priorités</span> et restez organisé chaque jour.</p>
+    <img src="assets/images/to-do-list-applications.png" alt="to-do-list-applications.png" class="illustration">
+  </div>
+
+  <div class="login-right">
+    <h2>Se connecter</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div class="input-group">
+        <i class="fa fa-user"></i>
+        <input type="email" formControlName="email" placeholder="Entrez le nom d'utilisateur">
+      </div>
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="mot_de_passe" formControlName="mot_de_passe" placeholder="Entrez le mot de passe">
+      </div>
+      <div class="options">
+        <label><input type="checkbox"> Souvenez-moi</label>
+        <a href="#">mot de passe oublié</a>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>ou connectez-vous avec</p>
+    <div class="social-icons">
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-google"></i>
+      <i class="fab fa-x-twitter"></i>
+    </div >
+    <p>Vous n’avez pas de compte? <a routerLink="/register">Créer Une</a></p>
+  </div>
+</div>

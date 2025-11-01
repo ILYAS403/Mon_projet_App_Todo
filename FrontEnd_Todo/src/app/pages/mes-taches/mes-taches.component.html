@@ -1,0 +1,81 @@
+<div class="task-container">
+  <!-- Barre du haut -->
+  <div class="top-bar">
+    <div class="logo">
+      <img src="assets/images/planify-logo.png" alt="Planify" />
+      <span>Planify</span>
+    </div>
+
+    <input type="text" placeholder="Search your task here..." class="search-bar" />
+
+    <div class="icons">
+      <i class="fa fa-search"></i>
+      <i class="fa fa-bell"></i>
+      <i class="fa fa-calendar"></i>
+      <div class="date">{{ currentDate | date:'EEEE dd/MM/yyyy' }}</div>
+    </div>
+  </div>
+
+  <!-- Corps principal -->
+  <div class="main-content">
+    <!-- Menu latéral -->
+    <aside class="sidebar">
+      <div class="user-profile">
+        <img src="assets/images/avatar.jpg" alt="User avatar" />
+        <h4>{{ user?.prenom }} {{ user?.nom }}</h4>
+        <p>{{ user?.email }}</p>
+      </div>
+
+      <ul class="menu">
+        <li>🏠 Dashboard</li>
+        <li class="active">📝 Mes Tâches</li>
+        <li>➕ Ajouter une tâche</li>
+        <li>⚙️ Settings</li>
+        <li>❓ Help</li>
+      </ul>
+
+      <button class="logout-btn">🚪 Déconnexion</button>
+    </aside>
+
+    <!-- Tableau des tâches -->
+    <section class="task-table">
+      <h3>Journée {{ currentDay }} — Semaine du 14 au 19 Octobre 2025</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tâche</th>
+            <th>Description</th>
+            <th>H début</th>
+            <th>H fin</th>
+            <th>Priorité</th>
+            <th>Terminer</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tache of tachesDuJour">
+            <td>{{ tache.nom }}</td>
+            <td>{{ tache.description }}</td>
+            <td>{{ tache.heure_debut }}</td>
+            <td>{{ tache.heure_fin }}</td>
+            <td>{{ tache.priorite }}</td>
+            <td>{{ tache.etat }}</td>
+            <td class="actions">
+              <i class="fa fa-edit" (click)="editerTache(tache)"></i>
+              <i class="fa fa-trash" (click)="supprimerTache(tache.id)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button (click)="precedent()" [disabled]="currentDay === 1"><i class="fa fa-arrow-left"></i></button>
+        <span>{{ currentDay }}</span>
+        <button (click)="suivant()" [disabled]="currentDay === 6"><i class="fa fa-arrow-right"></i></button>
+      </div>
+    </section>
+  </div>
+</div>
+

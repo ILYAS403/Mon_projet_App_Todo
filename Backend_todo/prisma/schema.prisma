@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// schema.prisma
+
+
+
+model Utilisateur {
+  id_utilisateur Int      @id @default(autoincrement())
+  prenom         String
+  nom            String
+  sexe           String?
+  photo          String?
+  profil         String
+  email          String   @unique
+  mot_de_passe   String
+
+  // Relations
+  taches         Tache[]
+}
+
+model Tache {
+  id_tache     Int      @id @default(autoincrement())
+  titre        String
+  description  String?
+  priorite     String?
+  heure_debut  DateTime?
+  heure_fin    DateTime?
+
+  // Relations
+  utilisateur  Utilisateur @relation(fields: [id_utilisateur], references: [id_utilisateur])
+  id_utilisateur Int
+
+  journee      Journee @relation(fields: [id_journee], references: [id_journee])
+  id_journee   Int
+}
+
+model Journee {
+  id_journee  Int     @id @default(autoincrement())
+  nom         String
+
+  // Relations
+  semaine     Semaine @relation(fields: [id_semaine], references: [id_semaine])
+  id_semaine  Int
+
+  taches      Tache[]
+}
+
+model Semaine {
+  id_semaine     Int       @id @default(autoincrement())
+  plage_journee  String
+
+  // Relations
+  journees       Journee[]
+}
