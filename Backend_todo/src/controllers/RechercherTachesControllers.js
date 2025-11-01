@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+/*import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -52,3 +52,4 @@ export const  = async (req, res) => {
     res.status(500).json({ message: "Erreur serveur." });
   }
 };
+*/

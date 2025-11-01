@@ -29,7 +29,7 @@ app.use("/api/taches", ListeTachesRoute);
 app.use("/api/taches", SupprimerTachesRoute);
 app.use("/api/taches", AjouterTachesRoute);
 app.use("/api/taches", ModifierTachesRoute);
-app.use("/api/taches", RechercherTachesRoute);
+//app.use("/api/taches", RechercherTachesRoute);
 app.get("/", (req, res) => {//Route de base pour vérifier que le serveur fonctionne
   res.send("Bienvenue sur mon API To-Do !");//On envoie une réponse simple pour indiquer que l’API est opérationnelle
 });
