@@ -14,6 +14,21 @@ const options = {
         url: "http://localhost:5000",
       },
     ],
+
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT", // Ce format permet d'envoyer un JWT
+        },
+      },
+    },
+ security: [
+      {
+        BearerAuth: [], // Cette ligne applique l'authentification sur toutes les routes
+      },
+    ],
   },
   apis: [" ./src/routes/*.js"], // Où Swagger va lire les annotations
 };

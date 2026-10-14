@@ -1,6 +1,6 @@
 import express from "express";
 import { AjouterTaches } from "../controllers/AjouterTachesControllers.js";
-
+import authMiddleware from '../middlewares/authMiddleware.js'; // Le middleware d'authentification
 const router = express.Router();
 
 /**
@@ -9,6 +9,8 @@ const router = express.Router();
  *   post:
  *     summary: Ajout de tâches avec création automatique de la semaine et de la journée
  *     tags: [Tâches]
+ *     security:  
+ *       - BearerAuth: [] 
  *     requestBody:
  *       required: true
  *       content:
@@ -29,8 +31,6 @@ const router = express.Router();
  *               heure_fin:
  *                 type: string
  *                 format: date-time
- *               id_utilisateur:
- *                 type: integer
  *               nom_jour:
  *                 type: string
  *                 example: Lundi
@@ -45,6 +45,6 @@ const router = express.Router();
  *       500:
  *         description: Erreur interne du serveur
  */
-router.post("/AjouterTaches", AjouterTaches);
+router.post("/AjouterTaches", authMiddleware, AjouterTaches);
 
 export default router;

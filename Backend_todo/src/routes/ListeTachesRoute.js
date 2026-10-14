@@ -1,6 +1,6 @@
 import express from "express";
 import { getTachesParUtilisateurEtSemaine } from "../controllers/ListeTachesControllers.js";
-
+import authMiddleware from '../middlewares/authMiddleware.js'; // Le middleware d'authentification
 const router = express.Router();
 
 /**
@@ -11,11 +11,11 @@ const router = express.Router();
  *     tags: [Tâches]
  *     parameters:
  *       - in: query
- *         name: email
+ *         name: id_user
  *         schema:
- *           type: string
+ *           type: integer
  *         required: true
- *         description: Email de l'utilisateur
+ *         description: 1
  *       - in: query
  *         name: semaine
  *         schema:

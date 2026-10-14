@@ -3,14 +3,13 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export const AjouterTaches = async (req, res) => {
-  try {
-    const {
-      titre,
+  try { 
+    const { 
+      titre, 
       description,
       priorite,
       heure_debut,
       heure_fin,
-      id_utilisateur,
       nom_jour,
       plage_journee
     } = req.body;
@@ -22,7 +21,6 @@ export const AjouterTaches = async (req, res) => {
       !priorite ||
       !heure_debut ||
       !heure_fin ||
-      !id_utilisateur ||
       !nom_jour ||
       !plage_journee
     ) {
@@ -67,7 +65,7 @@ export const AjouterTaches = async (req, res) => {
         priorite,
         heure_debut: new Date(heure_debut),
         heure_fin: new Date(heure_fin),
-        id_utilisateur: Number(id_utilisateur),
+        id_utilisateur: req.userId,
         id_journee: journee.id_journee,
       },
     });

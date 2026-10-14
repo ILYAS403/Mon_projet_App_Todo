@@ -3,27 +3,18 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export const getTachesParUtilisateurEtSemaine = async (req, res) => {
-  const { email, semaine, jour } = req.query;
+  const { id_user,semaine, jour } = req.query;
 
   try {
     // ✅ Vérification des paramètres
-    if (!email || !semaine || !jour) {
+    if ( !id_user,!semaine || !jour) {
       return res.status(400).json({ message: "Paramètres manquants." });
-    }
-
-    // ✅ Recherche de l'utilisateur
-    const utilisateur = await prisma.utilisateur.findUnique({
-      where: { email: email }, // ton champ est bien "mail" dans le MCD
-    });
-
-    if (!utilisateur) {
-      return res.status(404).json({ message: "Utilisateur non trouvé." });
     }
 
     // ✅ Récupération des tâches liées à la semaine et au jour
     const taches = await prisma.tache.findMany({
       where: {
-        id_utilisateur: utilisateur.id, // relation directe avec l’utilisateur
+        id_utilisateur: Number(id_user), // relation directe avec l’utilisateur
         journee: {
           nom: jour, // si tu veux utiliser "Lundi", "Mardi", etc.
           semaine: {
